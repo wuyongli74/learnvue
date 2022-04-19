@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+
+  <!-- 
+    1.插槽的基本使用<slot></slot>
+    2.插槽的默认值<slot>button</slot>
+    3.如果有多个值，同时放入到组件进行替换时，一起作为替换元素
+  -->
+  <div id="app">
+    <cpn></cpn>
+    <cpn><span>hhh</span></cpn>
+    <cpn><i>hahaha</i></cpn>
+    <cpn>
+      <i>hahaha</i>
+      <br>
+      <span>hahaha</span>
+    </cpn>
+    <cpn></cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <h2>cpn组件</h2>
+      <p>组件，jjj</p>
+      <slot><button>按钮</button></slot>
+    </div>
+  </template>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你好啊'
+      },
+      components: {
+        cpn: {
+          template: '#cpn',
+          data () {
+            return {
+              name: '子组件name'
+            }
+          },
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>
